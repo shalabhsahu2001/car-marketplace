@@ -1,0 +1,14 @@
+.three-d-dropdown {
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), 
+                -4px -4px 8px rgba(255, 255, 255, 0.7);
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.three-d-dropdown:hover {
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2), 
+                -6px -6px 12px rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+}
