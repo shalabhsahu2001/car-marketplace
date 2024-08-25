@@ -3,6 +3,7 @@ import React from 'react'
 import { Button } from './components/ui/button';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import Category from './components/Category';
 
 function Home() {
   return (
@@ -11,6 +12,8 @@ function Home() {
         <Header />
       {/* Hero */}
         <Hero />
+      {/*Category */}
+        <Category />
     </div>
   )
 }

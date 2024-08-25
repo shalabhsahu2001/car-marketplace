@@ -2,7 +2,8 @@ import React, {useEffect, useState} from 'react'
 import Search from './Search'
 
 function Hero() {
-    const [scrollY, setScrollY] = useState(0);
+    //Scroll effect baadme daalunga
+   /* const [scrollY, setScrollY] = useState(0);
     const [translateX, setTranslateX] = useState(0);
 
     useEffect(() => {
@@ -16,7 +17,7 @@ function Hero() {
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, []); */
 
   return (
     <div>
@@ -28,7 +29,7 @@ function Hero() {
 
             <img src='/g63.png' 
             alt='Car'
-            style={{ transform: `translateX(${translateX}px)` }} 
+            //style={{ transform: `translateX(${translateX}px)` }} //scroll effect
             className='transition-transform duration-100 ease-out'></img>
         </div>
     </div>
