@@ -1,8 +1,11 @@
+import Header from '@/components/Header'
 import React from 'react'
 
 function AddListing() {
   return (
-    <div>AddListing</div>
+    <div>
+      <Header />
+    </div>
   )
 }
 

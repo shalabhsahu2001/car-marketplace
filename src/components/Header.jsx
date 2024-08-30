@@ -19,11 +19,13 @@ function Header() {
             <div className='flex items-center gap-5'>
                 <UserButton />
                 <Link to={'/profile'}>
-                    <Button>Submit Listing</Button>
+                    <Button >Submit Listing</Button>
                 </Link>
             </div>
             :
-            <Button>Submit Listing</Button>    
+            <Link to={'/profile'}>
+                <Button>Submit Listing</Button>
+            </Link>    
         }
     </div>
   )

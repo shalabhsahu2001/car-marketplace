@@ -22,13 +22,13 @@ function InfoSection() {
 
         <div className="p-8 sm:p-16 lg:p-24">
           <h2 className="text-2xl font-bold sm:text-3xl">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore, debitis.
+            Discover Your Perfect Car with Us
           </h2>
 
           <p className="mt-4 text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, molestiae! Quidem est
-            esse numquam odio deleniti, beatae, magni dolores provident quaerat totam eos, aperiam
-            architecto eius quis quibusdam fugiat dicta.
+          Welcome to [Your Car Marketplace Name], where finding your dream car is simple and exciting. 
+          Explore our extensive collection of new and pre-owned vehicles, all with detailed information and high-quality images.
+          Whether you're buying or selling, our platform ensures a seamless, secure, and efficient experience.
           </p>
 
           <a
