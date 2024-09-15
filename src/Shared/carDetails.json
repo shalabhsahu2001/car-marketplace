@@ -50,8 +50,8 @@
     },
     
     {
-      "label": "Make",
-      "name": "make",
+      "label": "Brand",
+      "name": "brand",
       "fieldType": "dropdown",
       "required": true,
       "options": [

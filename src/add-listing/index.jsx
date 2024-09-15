@@ -68,7 +68,7 @@ function AddListing() {
           </div>
           {/* Car images  */}
           <div className='mt-10 flex justify-end'>
-            <Button onClick = {(e) => onSubmit(e)}>
+            <Button type="submit" onClick = {(e) => onSubmit(e)}>
               Submit
             </Button>
           </div>
