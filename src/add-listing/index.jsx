@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 import carDetails from "./../Shared/carDetails.json";
 import InputField from './components/InputField';
 import DropdownField from './components/DropdownField';
-import { Textarea } from '@/components/ui/textarea';
 import { Separator } from '@/components/ui/separator';
 import features from './../Shared/features.json';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
+import { db } from './../../configs';
+import { CarListing } from './../../configs/schema';
+import TextAreaField from './components/TextAreaField';
 function AddListing() {
   
   const [formData, setFormData] = useState([]);
@@ -20,10 +22,20 @@ function AddListing() {
     console.log(formData);
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
     
+    try {
+      const result = await db.insert(CarListing).values(formData);
+
+      if(result) {
+        console.log("Data Saved");
+      } 
+    }
+    catch(e) {
+      console.log("Error",e);
+    }
   }
 
   return (
@@ -46,7 +58,7 @@ function AddListing() {
                   :item.fieldType == 'dropdown' 
                   ? <DropdownField item={item} handleInputChange={handleInputChange}/>
                   :item.fieldType == 'textarea' 
-                  ? <Textarea item={item} handleInputChange={handleInputChange}/>
+                  ? <TextAreaField item={item} handleInputChange={handleInputChange}/>
                   :null}
                 </div>
               ))}
