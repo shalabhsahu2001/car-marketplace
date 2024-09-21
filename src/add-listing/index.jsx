@@ -43,7 +43,6 @@ function AddListing() {
       [name]:value
     }))
     console.log(featuresData);
-    
   }
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -63,7 +62,7 @@ function AddListing() {
       console.log("Error",e);
     }
   }
-
+  
   return (
     <div>
       <Header />
@@ -108,13 +107,14 @@ function AddListing() {
           </div>
           {/* Car images  */}
           <Separator className='my-4' />
-          <UploadImages />
+          
           <div className='mt-10 flex justify-end'>
             <Button type="submit" onClick = {(e) => onSubmit(e)}>
               Submit
             </Button>
           </div>
         </form>
+        <UploadImages />
       </div>
     </div>
   )

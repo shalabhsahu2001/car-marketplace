@@ -1,3 +1,6 @@
+import { Button } from '@/components/ui/button';
+import { storage } from './../../../configs/firebaseConfig';
+import { ref, uploadBytes } from 'firebase/storage';
 import React, { useState } from 'react'
 import { IoMdCloseCircle } from "react-icons/io";
 
@@ -14,6 +17,18 @@ function UploadImages() {
     const onImageRemove = (image, index) => {
         const res = selectedFileList.filter((item) => item != image);
         setSelectedFileList(res);
+    }
+    const UploadImages = () => {
+        selectedFileList.forEach((file) => {
+            const fileName = Date.now()+'.jpeg';
+            const storageRef = ref(storage, 'car-marketplace/'+fileName);
+            const metaData = {
+                contentType: 'image/jpeg'
+            }
+            uploadBytes(storageRef, file, metaData).then((snapShot) => {
+                console.log("Uploaded File");
+            })
+        })  
     }
   return (
     <div>
@@ -40,6 +55,11 @@ function UploadImages() {
             <input type='file' multiple={true} id='upload-images' 
             onChange={onFileSelected}
             className='opacity-0'/>
+            <div>
+                <Button onClick={UploadImages}>
+                    Upload Images
+                </Button>
+            </div>
         </div>
     </div>
   )
