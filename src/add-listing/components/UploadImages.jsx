@@ -1,4 +1,3 @@
-import { serviceworker } from 'globals';
 import React, { useState } from 'react'
 import { IoMdCloseCircle } from "react-icons/io";
 
