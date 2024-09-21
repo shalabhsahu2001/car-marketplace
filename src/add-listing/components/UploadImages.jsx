@@ -1,4 +1,6 @@
+import { serviceworker } from 'globals';
 import React, { useState } from 'react'
+import { IoMdCloseCircle } from "react-icons/io";
 
 function UploadImages() {
     const [selectedFileList, setSelectedFileList] = useState([]);
@@ -9,15 +11,22 @@ function UploadImages() {
             setSelectedFileList((prev) => [...prev, file])
         }
     }
+
+    const onImageRemove = (image, index) => {
+        const res = selectedFileList.filter((item) => item != image);
+        setSelectedFileList(res);
+    }
   return (
     <div>
         <h2 className='font-medium text-xl my-3'>
             Upload car images
         </h2>
-        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6'>
+        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5'>
             {selectedFileList.map((image, index) => (
                 <div key={index}>
-                    <img src={URL.createObjectURL(image)} className='w-full h-[130]px object-cover' />
+                    <IoMdCloseCircle className='absolute text-lg'
+                    onClick={() => onImageRemove(image, index)}/>
+                    <img src={URL.createObjectURL(image)} className='w-full h-[130]px object-cover rounded-xl' />
                 </div>
             ))}
             
