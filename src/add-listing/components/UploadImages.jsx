@@ -1,11 +1,19 @@
 import { Button } from '@/components/ui/button';
 import { storage } from './../../../configs/firebaseConfig';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoMdCloseCircle } from "react-icons/io";
+import { CarImages } from './../../../configs/schema';
 
-function UploadImages() {
+function UploadImages({triggerUploadImages}) {
     const [selectedFileList, setSelectedFileList] = useState([]);
+    
+    useEffect(() => {
+        if(triggerUploadImages) {
+            UploadImageToServer();
+        }
+    }, [triggerUploadImages])
+    
     const onFileSelected = (event) => {
         const files = event.target.files;
         for(let i = 0; i < files?.length; i++) {
@@ -18,7 +26,7 @@ function UploadImages() {
         const res = selectedFileList.filter((item) => item != image);
         setSelectedFileList(res);
     }
-    const UploadImages = () => {
+    const UploadImageToServer = () => {
         selectedFileList.forEach((file) => {
             const fileName = Date.now()+'.jpeg';
             const storageRef = ref(storage, 'car-marketplace/'+fileName);
@@ -30,7 +38,10 @@ function UploadImages() {
             }).then(resp => {
                 getDownloadURL(storageRef).then(async(downloadUrl) => {
                     console.log(downloadUrl);
-                    
+                    await db.insert(CarImages).values({
+                        imageUrl:downloadUrl,
+                        carListingId:triggerUploadImages
+                    })
                 })
             })
         })  
@@ -60,11 +71,6 @@ function UploadImages() {
             <input type='file' multiple={true} id='upload-images' 
             onChange={onFileSelected}
             className='opacity-0'/>
-            <div>
-                <Button onClick={UploadImages}>
-                    Upload Images
-                </Button>
-            </div>
         </div>
     </div>
   )

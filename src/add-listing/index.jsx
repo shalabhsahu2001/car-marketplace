@@ -16,7 +16,7 @@ function AddListing() {
   
   const [formData, setFormData] = useState([]);
   const [featuresData, setFeaturesData] = useState([]);
-  
+  const [triggerUploadImages, setTriggerUploadImages] = useState();
   /**
    * used to capture user input from form
    * @param {*} name 
@@ -52,10 +52,11 @@ function AddListing() {
       const result = await db.insert(CarListing).values({
         ...formData,
         features:featuresData
-      });
+      }).returning({id:CarListing.id});
 
       if(result) {
         console.log("Data Saved");
+        setTriggerUploadImages(result[0]?.id)
       } 
     }
     catch(e) {
@@ -107,14 +108,14 @@ function AddListing() {
           </div>
           {/* Car images  */}
           <Separator className='my-4' />
-          
+            <UploadImages triggerUploadImages={triggerUploadImages} />
           <div className='mt-10 flex justify-end'>
             <Button type="submit" onClick = {(e) => onSubmit(e)}>
               Submit
             </Button>
           </div>
         </form>
-        <UploadImages />
+        
       </div>
     </div>
   )
